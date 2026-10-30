@@ -40,4 +40,10 @@ export default function App() {
 
     setCards(shuffle(cards));
   }
+
+  function playAgain() {
+    setClicked([]);
+    setStatus("playing");
+    setCards(shuffle(cards));
+  }
 }
