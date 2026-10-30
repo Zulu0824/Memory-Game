@@ -88,6 +88,18 @@ export default function App() {
           <li>Click all {cards.length} without a repeat to win.</li>
         </ul>
       </section>
+      <div className={`message ${status}`}>
+        <p>
+          {status === "playing" &&
+            "Click a Pokémon to start. Don't click any twice!"}
+          {status === "lost" && "You lost! You clicked the same Pokémon twice."}
+          {status === "won" &&
+            `You won! You clicked all ${cards.length} Pokémon.`}
+        </p>
+        {status !== "playing" && (
+          <button onClick={playAgain}>Play again</button>
+        )}
+      </div>
     </div>
   );
 }
