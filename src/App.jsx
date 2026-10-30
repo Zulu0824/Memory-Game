@@ -46,4 +46,26 @@ export default function App() {
     setStatus("playing");
     setCards(shuffle(cards));
   }
+
+  useEffect(() => {
+    async function getPokemon() {
+      const pokemonIds = [
+        809, 484, 448, 384, 646, 321, 799, 879, 818, 612, 111, 126,
+      ];
+
+      const promises = pokemonIds.map(async (id) => {
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+        const data = await response.json();
+        return {
+          id: data.id,
+          name: capitalize(data.name),
+          image: data.sprites.front_default,
+        };
+      });
+
+      const results = await Promise.all(promises);
+      setCards(results);
+    }
+    getPokemon();
+  }, []);
 }
