@@ -79,6 +79,15 @@ export default function App() {
           <p>Best: {bestScore}</p>
         </div>
       </header>
+      <section className="rules">
+        <h2>How to play</h2>
+        <ul>
+          <li>Click a Pokémon to score a point.</li>
+          <li>The cards shuffle after every click.</li>
+          <li>Never click the same Pokémon twice.</li>
+          <li>Click all {cards.length} without a repeat to win.</li>
+        </ul>
+      </section>
     </div>
   );
 }
