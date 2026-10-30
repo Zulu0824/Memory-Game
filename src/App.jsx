@@ -12,3 +12,32 @@ function shuffle(array) {
   }
   return copy;
 }
+
+export default function App() {
+  const [cards, setCards] = useState([]);
+  const [clicked, setClicked] = useState([]);
+  const [bestScore, setBestScore] = useState(0);
+  const [status, setStatus] = useState("playing");
+
+  function handleCardClick(id) {
+    if (status !== "playing") return;
+
+    if (clicked.includes(id)) {
+      setStatus("lost");
+      return;
+    }
+
+    const newClicked = [...clicked, id];
+    setClicked(newClicked);
+
+    if (newClicked.length > bestScore) {
+      setBestScore(newClicked.length);
+    }
+
+    if (newClicked.length === cards.length) {
+      setStatus("won");
+    }
+
+    setCards(shuffle(cards));
+  }
+}
