@@ -100,6 +100,19 @@ export default function App() {
           <button onClick={playAgain}>Play again</button>
         )}
       </div>
+      <main className="gameboard">
+        {cards.map((card) => (
+          <button
+            key={card.id}
+            className="card"
+            disabled={status !== "playing"}
+            onClick={() => handleCardClick(card.id)}
+          >
+            <img src={card.image} alt={card.name} />
+            <p>{card.name}</p>
+          </button>
+        ))}
+      </main>
     </div>
   );
 }
