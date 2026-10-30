@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function captalize(str) {
+function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
@@ -58,7 +58,7 @@ export default function App() {
         const data = await response.json();
         return {
           id: data.id,
-          name: capitalize(data.name),
+          name: data.name,
           image: data.sprites.front_default,
         };
       });
