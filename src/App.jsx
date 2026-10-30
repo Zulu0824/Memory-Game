@@ -68,4 +68,17 @@ export default function App() {
     }
     getPokemon();
   }, []);
+
+  if (cards.length === 0) return <p>Loading Pokemons...</p>;
+  return (
+    <div className="app">
+      <header className="header">
+        <h1>Pokémon Memory Game</h1>
+        <div className="scores">
+          <p>Score: {clicked.length}</p>
+          <p>Best: {bestScore}</p>
+        </div>
+      </header>
+    </div>
+  );
 }
